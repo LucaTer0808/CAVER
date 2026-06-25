@@ -36,6 +36,12 @@ schedulers = dict(
 )
 
 data = dict(
+    train=dict(
+        name=[
+            "DUT_OMRON_GEN_DEPTH", # doesnt matter we dont train anyway
+        ],
+        shape=dict(h=256, w=256),
+    ),
     test=dict(
         name=[
             "DUT_OMRON_GEN_DEPTH",
