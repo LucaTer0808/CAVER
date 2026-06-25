@@ -3,6 +3,7 @@ import csv
 import inspect
 import os
 import shutil
+import time
 from datetime import datetime
 from functools import partial
 
@@ -130,6 +131,13 @@ class TeDataset(torch.utils.data.Dataset):
 @torch.no_grad()
 def eval_once(model, data_loader, save_path="", show_bar=True):
     model.eval()
+
+    if save_path:
+        os.makedirs(save_path, exist_ok=True)
+
+    torch.cuda.synchronize()
+    start_time = time.time()
+
     cal_total_seg_metrics = CalTotalMetric()
 
     bar_iter = enumerate(data_loader)
@@ -154,6 +162,21 @@ def eval_once(model, data_loader, save_path="", show_bar=True):
 
             pred = (pred * 255).astype(np.uint8)
             cal_total_seg_metrics.step(pred, mask_array, mask_path)
+
+    torch.cuda.synchronize()
+    end_time = time.time()
+
+    total_time = end_time - start_time
+    images_processed = len(data_loader.dataset)
+    time_per_image = total_time / images_processed if images_processed > 0 else 0
+
+    if save_path:
+        eval_path = os.path.join(save_path, "evaluation.txt")
+        with open(eval_path, "w") as f:
+            f.write(f"Total time: {total_time:.4f} seconds\n")
+            f.write(f"Images processed: {images_processed}\n")
+            f.write(f"Time per image: {time_per_image:.4f} seconds\n")
+
     return cal_total_seg_metrics.get_results()
 
 
