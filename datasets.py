@@ -18,11 +18,6 @@ NJUD_GEN_DEPTH = dict(
     depth=dict(path="/scratch/tmp/lterfehr/datasets/rgbd/NJUD_gen_depth/test_data/gen_depth", suffix=".png"),
     mask=dict(path="/scratch/tmp/lterfehr/datasets/rgbd/NJUD_gen_depth/test_data/test_masks", suffix=".png"),
 )
-PASCAL_S_GEN_DEPTH = dict(
-    image=dict(path="/scratch/tmp/lterfehr/datasets/rgbd/PASCAL-S_gen_depth/test_images", suffix=".png"),
-    depth=dict(path="/scratch/tmp/lterfehr/datasets/rgbd/PASCAL-S_gen_depth/test_gen_depth", suffix=".png"),
-    mask=dict(path="/scratch/tmp/lterfehr/datasets/rgbd/PASCAL-S_gen_depth/test_masks", suffix=".png"),
-)
 REDWEB_S = dict(
     image=dict(path="/scratch/tmp/lterfehr/datasets/rgbd/ReDWeb-S/testset/RGB", suffix=".jpg"),
     depth=dict(path="/scratch/tmp/lterfehr/datasets/rgbd/ReDWeb-S/testset/depth", suffix=".png"),

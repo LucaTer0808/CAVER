@@ -48,7 +48,6 @@ data = dict(
             "DUTS_GEN_DEPTH",
             "LFSD",
             "NJUD_GEN_DEPTH",
-            "PASCAL_S_GEN_DEPTH",
             "REDWEB_S",
             "SIP_GEN_DEPTH",
             "STERE",
