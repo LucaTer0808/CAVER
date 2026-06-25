@@ -343,10 +343,6 @@ def parse_config():
     os.makedirs(cfg.path.save, exist_ok=True)
     os.makedirs(cfg.path.pth, exist_ok=True)
 
-    with open(cfg.path.log, encoding="utf-8", mode="w") as f:
-        f.write(f"=== {datetime.now()} ===\n")
-    with open(cfg.path.cfg, encoding="utf-8", mode="w") as f:
-        f.write(cfg.pretty_text)
     shutil.copy(__file__, cfg.path.trainer)
 
     if os.path.exists(cfg.vis_path):
